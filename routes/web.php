@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('upload', function (Request $request) {
+    dd('here in post');
+})->name('upload.image');
