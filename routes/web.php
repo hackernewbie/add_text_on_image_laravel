@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +20,18 @@ Route::get('/', function () {
 });
 
 Route::post('upload', function (Request $request) {
-    dd('here in post');
+    $path             =   $request->image_file->storeAs('public/images',$request->image_file->getClientOriginalName());
+    $uploadedPath     =   asset('/storage/images').'/'.$request->image_file->getClientOriginalName();
+
+    $img = Image::make($uploadedPath)->resize(300, 200);
+    //$img->text('This is a example ', 120, 100);
+    //$img->save(public_path($path));
+    //$img->save('public/images/updated');
+    //return $img->response('jpg');
+    dd($img->response('jpg'));
 })->name('upload.image');
+
+// Route::get('image', function() {
+//     $img = Image::make('foo.jpg')->resize(300, 200);
+//     return $img->response('jpg');
+// });
