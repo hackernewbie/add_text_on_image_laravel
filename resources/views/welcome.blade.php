@@ -41,7 +41,7 @@
             <div class="div">
                 <h2>Upload Image</h2>
                 <hr/>
-                <form action="{{route('upload.image')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('image.upload')}}" method="post" enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                             <div class="col-12">
