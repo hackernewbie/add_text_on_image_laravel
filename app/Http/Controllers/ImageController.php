@@ -26,6 +26,7 @@ class ImageController extends Controller
             $font->align('left');
             // $font->angle(45);
         });
+        $img->blur(10);
 
         if(!File::exists($storageDir.'\''.$request->image_file->getClientOriginalName())){
             File::makeDirectory($storageDir, 0755, true, true);
